@@ -1,0 +1,21 @@
+.ingredient_details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ingredient_image {
+  max-width: 480px;
+}
+
+.ingredient_specifications {
+  display: flex;
+}
+
+.ingredient_specification_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}

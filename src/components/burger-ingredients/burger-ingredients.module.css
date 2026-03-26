@@ -13,3 +13,14 @@
   text-align: center;
   list-style-type: none;
 }
+
+.burger_ingredient_tab {
+  text-transform: capitalize;
+}
+
+.burger_ingredients_content {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+  scroll-behavior: smooth;
+}

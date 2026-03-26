@@ -1,0 +1,23 @@
+.ingredient {
+  position: relative;
+  width: 272px;
+  max-width: 272px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ingredient_counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.ingredient_price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingredient_title {
+  font-size: 16px;
+}

@@ -1,0 +1,8 @@
+.burger_constructor_row {
+  display: flex;
+  align-items: center;
+}
+
+.constructor_row_icon {
+  width: 32px;
+}

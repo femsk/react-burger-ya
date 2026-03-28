@@ -5,3 +5,23 @@
   padding-bottom: 20px;
   color: var(--text-primary-color);
 }
+
+.burger_constructor_list {
+  width: 100%;
+  overflow: auto;
+}
+
+.burger_constructor_element {
+  max-height: 80px;
+}
+
+.burger_constructor_footer {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.constructor_currency_icon {
+  width: 36px;
+  height: 36px;
+}

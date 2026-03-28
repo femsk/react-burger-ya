@@ -1,0 +1,12 @@
+.ingredient_list_title {
+  margin-bottom: auto;
+  font-size: 24px;
+  text-transform: capitalize;
+}
+
+.ingredient_list_body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+}

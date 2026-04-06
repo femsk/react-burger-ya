@@ -15,6 +15,12 @@
   max-height: 80px;
 }
 
+.constructor_element_stub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .burger_constructor_footer {
   display: flex;
   justify-content: end;

@@ -1,16 +1,20 @@
 import { Tab } from '@krgaa/react-developer-burger-ui-components';
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import useObserver from '@components/burger-ingredients/useObserver.js';
 import { IngredientsList } from '@components/ingredient-list/ingredients-list.jsx';
+import { getIngredients } from '@services/burger-ingredients/slice';
 import { burgerIngredientNames, burgerIngredientTypes } from '@utils/constants.js';
 
 import styles from './burger-ingredients.module.css';
 
-export const BurgerIngredients = ({ ingredients }) => {
+export const BurgerIngredients = () => {
   const [activeTab, setActiveTab] = useState(burgerIngredientTypes.bun);
   const containerRef = useRef(null);
   const ingredientLists = useRef(null);
+
+  const ingredients = useSelector(getIngredients);
 
   const scrollTo = useCallback((tab) => {
     setActiveTab(burgerIngredientTypes[tab]);

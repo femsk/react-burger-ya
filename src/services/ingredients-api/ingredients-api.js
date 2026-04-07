@@ -1,12 +1,26 @@
-import axios from 'axios';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { ingredientsUrl } from '@utils/constants';
+import { ingredientsUrl, API_HEADERS } from '@utils/constants';
 
-export const getBurgerIngredients = () => {
-  return axios(ingredientsUrl)
-    .then(({ data }) => data)
-    .catch((error) => {
-      console.error(error?.message);
-      return error;
-    });
-};
+export const burgerIngredientsApi = createApi({
+  reducerPath: 'burgerIngredientsApi',
+  baseQuery: fetchBaseQuery({
+    prepareHeaders: (headers) => {
+      for (let [key, value] of Object.entries(API_HEADERS)) {
+        headers.set(key, value);
+      }
+    },
+  }),
+  endpoints: (builder) => ({
+    getBurgerIngredients: builder.query({
+      query: () => ({
+        url: ingredientsUrl + 'asd',
+      }),
+      transformResponse(response) {
+        return response?.data;
+      },
+    }),
+  }),
+});
+
+export const { useGetBurgerIngredientsQuery } = burgerIngredientsApi;

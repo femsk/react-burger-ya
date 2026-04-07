@@ -1,10 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { saveOrderUrl } from '@utils/constants.js';
-
-const API_HEADERS = {
-  'Content-Type': 'application/json',
-};
+import { saveOrderUrl, API_HEADERS } from '@utils/constants.js';
 
 export const orderApi = createApi({
   reducerPath: 'orderApi',

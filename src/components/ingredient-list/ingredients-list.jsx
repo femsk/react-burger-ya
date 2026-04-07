@@ -61,14 +61,7 @@ export const IngredientsList = ({ ingredients, ingredientType }) => {
       </div>
       {isShowingModal && (
         <Modal header="Детали ингредиента" onClose={() => selectIngredientHandler(null)}>
-          <IngredientDetails
-            imageUrl={currentIngredient.image_large}
-            name={currentIngredient.name}
-            calories={currentIngredient.calories}
-            carbohydrates={currentIngredient.carbohydrates}
-            fat={currentIngredient.fat}
-            proteins={currentIngredient.proteins}
-          />
+          <IngredientDetails ingredient={currentIngredient} />
         </Modal>
       )}
     </>

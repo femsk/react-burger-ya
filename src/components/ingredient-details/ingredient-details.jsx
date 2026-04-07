@@ -1,16 +1,11 @@
 import styles from './ingredient-details.module.css';
 
 export const IngredientDetails = ({
-  imageUrl,
-  name,
-  calories,
-  carbohydrates,
-  fat,
-  proteins,
+  ingredient: { image_large: imageUrl, name, calories, carbohydrates, fat, proteins },
 }) => {
   return (
     <div className={styles.ingredient_details}>
-      <img src={imageUrl} alt="ingredient_image" className={styles.ingredient_image} />
+      <img src={imageUrl} alt={name} className={styles.ingredient_image} />
       <span className="text text_type_main-medium mt-4">{name}</span>
       <div
         className={`${styles.ingredient_specifications} text text_type_main-default mt-8 mb-15`}

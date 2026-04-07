@@ -17,7 +17,7 @@ export const BurgerIngredientItem = ({ ingredient, selectIngredient, zoneType })
         onClick={() => selectIngredient(ingredient)}
       >
         <div className="ingredient_image">
-          <img src={ingredient.image} alt="ingredient-image" />
+          <img src={ingredient.image} alt={ingredient.name} />
         </div>
         <div className={`${styles.ingredient_price} text text_type_digits-default`}>
           {ingredient.price}

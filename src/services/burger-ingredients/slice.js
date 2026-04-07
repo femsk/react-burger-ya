@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { burgerIngredientsApi } from '@services/ingredients-api/ingredients-api';
 import {
   burgerIngredientTypes,
   updateIngredientCountOperation,
 } from '@utils/constants.js';
-
-import { loadIngredients } from './actions.js';
 
 const initialState = {
   items: [],
@@ -45,22 +44,31 @@ export const burgerIngredientsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loadIngredients.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(loadIngredients.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.items = action.payload.data.map((item) => ({
-          ...item,
-          count: 0,
-          index: null,
-        }));
-      })
-      .addCase(loadIngredients.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload ?? action.error?.message ?? 'Unknown error';
-      });
+      .addMatcher(
+        burgerIngredientsApi.endpoints.getBurgerIngredients.matchPending,
+        (state) => {
+          state.isLoading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        burgerIngredientsApi.endpoints.getBurgerIngredients.matchFulfilled,
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.items = payload?.map((item) => ({
+            ...item,
+            count: 0,
+            index: null,
+          }));
+        }
+      )
+      .addMatcher(
+        burgerIngredientsApi.endpoints.getBurgerIngredients.matchRejected,
+        (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload ? action.error?.message : 'Unknown error';
+        }
+      );
   },
   selectors: {
     getIngredients: (state) => state.items,

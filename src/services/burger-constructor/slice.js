@@ -12,16 +12,22 @@ export const burgerConstructorSlice = createSlice({
   name: 'burgerConstructor',
   initialState,
   reducers: {
-    addIngredient: (state, { payload: { item, index } }) => {
-      if (item.type === burgerIngredientTypes.bun) {
-        state.bun = item;
-      } else {
-        state.ingredients.splice(index + 1, 0, {
-          ...item,
-          uniqueId: nanoid(),
-        });
-        state.ingredients = state.ingredients.map((item, i) => ({ ...item, index: i }));
-      }
+    addIngredient: {
+      reducer: (state, { payload: { item, index, uniqueId } }) => {
+        if (item.type === burgerIngredientTypes.bun) {
+          state.bun = item;
+        } else {
+          state.ingredients.splice(index + 1, 0, {
+            ...item,
+            uniqueId,
+          });
+          state.ingredients = state.ingredients.map((item, i) => ({
+            ...item,
+            index: i,
+          }));
+        }
+      },
+      prepare: ({ item, index }) => ({ payload: { item, index, uniqueId: nanoid() } }),
     },
     removeIngredient: (state, action) => {
       if (action.payload.type === burgerIngredientTypes.bun) {

@@ -47,12 +47,16 @@ export const BurgerConstructor = () => {
 
   const [sendOrder, { isError }] = useSendOrderMutation();
   const sendOrderHandler = useCallback(async () => {
-    const response = await sendOrder({ ingredients: otherIngredients, bun });
+    try {
+      const response = await sendOrder({ ingredients: otherIngredients, bun });
 
-    if (!isError) {
-      setOrderNumber(response.data.order.number);
+      if (!isError) {
+        setOrderNumber(response.data?.order?.number);
+      }
+      openModal();
+    } catch (errr) {
+      console.error(errr);
     }
-    openModal();
   }, [otherIngredients, bun]);
 
   const closeOrderModalHandler = useCallback(() => {

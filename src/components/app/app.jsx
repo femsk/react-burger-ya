@@ -1,33 +1,28 @@
 import { Preloader } from '@krgaa/react-developer-burger-ui-components';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { AppHeader } from '@components/app-header/app-header';
 import { BurgerConstructor } from '@components/burger-constructor/burger-constructor';
 import { BurgerIngredients } from '@components/burger-ingredients/burger-ingredients';
-import { loadIngredients } from '@services/burger-ingredients/actions.js';
 import {
   getIngredientsLoading,
   getIngredientsError,
 } from '@services/burger-ingredients/slice.js';
+import { useGetBurgerIngredientsQuery } from '@services/ingredients-api/ingredients-api.js';
 
 import styles from './app.module.css';
 
 export const App = () => {
-  const dispatch = useDispatch();
-
   const isLoading = useSelector(getIngredientsLoading);
   const error = useSelector(getIngredientsError);
 
-  useEffect(() => {
-    dispatch(loadIngredients());
-  }, []);
+  useGetBurgerIngredientsQuery();
 
   if (isLoading) {
     return <Preloader />;
   }
   if (!isLoading && error) {
-    return <h2>{`Ошибка: ${error.message}`}</h2>;
+    return <h2>{`Ошибка: ${error}`}</h2>;
   }
 
   return (

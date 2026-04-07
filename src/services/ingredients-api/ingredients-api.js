@@ -14,7 +14,7 @@ export const burgerIngredientsApi = createApi({
   endpoints: (builder) => ({
     getBurgerIngredients: builder.query({
       query: () => ({
-        url: ingredientsUrl + 'asd',
+        url: ingredientsUrl,
       }),
       transformResponse(response) {
         return response?.data;

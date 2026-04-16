@@ -2,6 +2,14 @@ body {
   margin: 0;
 }
 
+.border-lightblue .constructor-element {
+  border: 1px solid #4c4cff;
+}
+
+.border-transparent .constructor-element {
+  border: 1px solid transparent;
+}
+
 /* Fix for scrollbar */
 
 @supports (scrollbar-color: auto) {
